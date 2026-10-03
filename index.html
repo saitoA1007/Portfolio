@@ -2,40 +2,100 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>あなたのＨＰタイトル</title>
-<meta name="keywords" content="ページのキーワードA,B,C">
-<meta name="description" content="ページの説明">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="index.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oa | ゲームプログラマー ポートフォリオ</title>
+<meta name="description" content="Oaのポートフォリオ。制作したゲーム13作品と自作エンジン AquaEngine の紹介。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="outer">
-<header><div id="header-container"><div id="head-inner"><h1>あなたのＨＰタイトル</h1>
-<p class="description">あなたのＨＰの説明文</p></div></div>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">Oa</a>
+  <nav aria-label="ページ内メニュー">
+    <a href="#hero">ピックアップ</a>
+    <a href="#about">自己紹介</a>
+    <a href="#works">作品紹介</a>
+    <a href="#engine">エンジン紹介</a>
+  </nav>
 </header>
-<div id="content-wrapper">
+
 <main>
-<div id="inner">
-<h2>記事ページ見出し・大</h2>
-<p>文章あれこれ</p>
-<h3>記事ページ見出し・中</h3>
-<p>文章あれこれ</p>
-<h4>記事ページ見出し・小</h4>
-<p>文章あれこれ</p>
-</div>
+  <!-- 上段：作品スライダー（中身は script.js の WORKS から生成） -->
+  <section id="hero" class="hero" aria-label="作品ピックアップ">
+    <div class="viewport"><div class="track" id="track"></div></div>
+    <button class="arrow prev" id="prev" aria-label="前の作品">‹</button>
+    <button class="arrow next" id="next" aria-label="次の作品">›</button>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <!-- 中段：自己紹介 -->
+  <section id="about" class="section about">
+    <h2>自己紹介</h2>
+    <div class="about-body">
+      <div class="about-text">
+        <p>はじめまして、Oaです。ゲームエンジンとグラフィックスの開発に取り組んでいます。</p>
+        <p>DirectX 12 で自作エンジン「AquaEngine」を作り、ラスタライズとレイトレーシング(DXR)の両方の描画に対応させています。ここには、これまでに作ったゲームとエンジンをまとめました。</p>
+        <p>目指している分野：<strong>ゲームエンジン／グラフィックスプログラマー</strong></p>
+        <ul class="links">
+          <li><a class="btn" href="https://github.com/ユーザー名" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a class="btn" href="portfolio.pdf" target="_blank" rel="noopener">ポートフォリオ(PDF)</a></li>
+        </ul>
+      </div>
+      <dl class="facts">
+        <div><dt>言語</dt><dd>C++</dd></div>
+        <div><dt>API</dt><dd>DirectX 12 / DXR</dd></div>
+        <div><dt>ツール</dt><dd>Visual Studio / Git / ImGui</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 下段：作品一覧（横3つまで、あふれたら次の段へ） -->
+  <section id="works" class="section">
+    <h2>作品紹介</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- 最下段：エンジン紹介 -->
+  <section id="engine" class="section engine">
+    <h2>エンジン紹介：AquaEngine</h2>
+    <p class="lead">C++とDirectX 12で作った自作ゲームエンジンです。ラスタライズとDXRのレイトレーシングを同じシーンで切り替えて描画できます。</p>
+
+    <div class="engine-cols">
+      <article>
+        <h3>基礎的な導入</h3>
+        <ol>
+          <li>リポジトリをクローンする</li>
+          <li>Visual Studioでソリューションを開く</li>
+          <li>ビルドして、サンプルシーンを実行する</li>
+        </ol>
+        <p class="note">※ 手順は実際の環境に合わせて書き換えてください。</p>
+      </article>
+      <article>
+        <h3>こだわったこと</h3>
+        <ul>
+          <li>ラスタライズとDXRの2つの描画パイプラインを持つ</li>
+          <li>ImGuiで作ったシーンエディタ（Undo/Redo、パラメータ調整）</li>
+          <li>パーティクルとトレイルのシステム</li>
+          <li>物理ベースレンダリング(PBR)</li>
+          <li>ノードで組み立てるマテリアルエディタ</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="doc">ドキュメント：
+      <a href="https://github.com/ユーザー名/AquaEngine" target="_blank" rel="noopener">https://github.com/ユーザー名/AquaEngine</a>
+    </p>
+  </section>
 </main>
-<aside>
-<div id="middle-inner">
-<div class="side-title">menu</div>
-<div class="side">
-<ul>
-<li>記事ページへのリンク</li>
-<li>記事ページへのリンク</li>
-</ul>
-</div>
-</div>
-</aside>
-</div>
-<footer>© 2010 あなたのホームページ</footer>
-</div></body>
+
+<footer class="site-footer">
+  <a href="#top">ページの先頭へ戻る</a>
+  <small>&copy; 2026 Oa</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
