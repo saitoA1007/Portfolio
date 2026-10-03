@@ -1,0 +1,154 @@
+:root {
+  --paper: #eef5f6;
+  --surface: #ffffff;
+  --ink: #12303b;
+  --muted: #55707a;
+  --aqua: #0b7f8f;
+  --aqua-soft: #cfe6ea;
+  --buoy: #f2b84b;
+  --line: #c4d9de;
+  --head: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.8;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--aqua); }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--buoy);
+  outline-offset: 3px;
+}
+
+/* ヘッダー（項目へのリンク） */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 12px clamp(16px, 4vw, 48px);
+  background: rgba(238, 245, 246, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { font-family: var(--head); font-size: 1.4rem; color: var(--ink); text-decoration: none; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.site-header nav a {
+  color: var(--ink); text-decoration: none; font-weight: 700; padding: 4px 2px;
+  border-bottom: 3px solid transparent;
+}
+.site-header nav a:hover { border-bottom-color: var(--buoy); }
+
+/* ヒーロー：スライダー */
+.hero { position: relative; background: var(--ink); }
+.viewport { overflow: hidden; }
+.track { display: flex; transition: transform 0.7s ease; }
+.slide {
+  position: relative; flex: 0 0 100%;
+  height: clamp(260px, 50vw, 540px);
+  background: linear-gradient(135deg, var(--aqua), var(--ink));
+  color: #fff; text-decoration: none; display: block;
+}
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.slide .cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 48px clamp(56px, 8vw, 96px) 28px;
+  background: linear-gradient(transparent, rgba(8, 28, 36, 0.85));
+}
+.slide .cap strong { display: block; font-family: var(--head); font-size: clamp(1.3rem, 3.2vw, 2.4rem); line-height: 1.3; }
+.slide .cap span { font-size: 0.95rem; opacity: 0.9; }
+
+.arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 0; background: rgba(255, 255, 255, 0.9); color: var(--ink);
+  font-size: 1.8rem; line-height: 1; cursor: pointer;
+}
+.arrow:hover { background: var(--buoy); }
+.arrow.prev { left: 12px; }
+.arrow.next { right: 12px; }
+
+.dots { position: absolute; right: 16px; bottom: 12px; display: flex; gap: 6px; }
+.dots button {
+  width: 10px; height: 10px; padding: 0; border-radius: 50%;
+  border: 0; background: rgba(255, 255, 255, 0.5); cursor: pointer;
+}
+.dots button[aria-current="true"] { background: var(--buoy); transform: scale(1.3); }
+
+/* セクション共通 */
+.section { max-width: 1120px; margin: 0 auto; padding: 72px clamp(16px, 4vw, 32px) 24px; }
+.section h2 {
+  font-family: var(--head); font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 28px;
+  padding-bottom: 10px; border-bottom: 4px solid var(--buoy); display: inline-block;
+}
+
+/* 自己紹介 */
+.about-body { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+.about-text { max-width: 60ch; }
+.about-text p { margin: 0 0 1em; }
+.links { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-block; padding: 8px 20px; border-radius: 999px;
+  background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem;
+}
+.btn:hover { background: var(--aqua); }
+.btn.sub { background: transparent; color: var(--aqua); box-shadow: inset 0 0 0 2px var(--aqua); }
+.btn.sub:hover { background: var(--aqua-soft); color: var(--ink); }
+.facts { margin: 0; border-left: 4px solid var(--aqua); padding-left: 20px; }
+.facts div { margin-bottom: 14px; }
+.facts dt { font-size: 0.85rem; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 700; }
+
+/* 作品一覧：最大3列、あふれたら次の段へ */
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 24px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  overflow: hidden; display: flex; flex-direction: column; scroll-margin-top: 80px;
+}
+.card .thumb {
+  aspect-ratio: 16 / 9; background: linear-gradient(135deg, var(--aqua-soft), var(--aqua));
+}
+.card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.card .body { padding: 16px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.card h3 { margin: 0; font-size: 1.1rem; }
+.card .meta { margin: 2px 0 8px; font-size: 0.85rem; color: var(--muted); }
+.card p { margin: 0 0 16px; font-size: 0.95rem; }
+.card .actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+.card .btn { padding: 6px 16px; font-size: 0.88rem; }
+
+/* エンジン紹介 */
+.lead { max-width: 60ch; margin: 0 0 28px; }
+.engine-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.engine-cols article { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; }
+.engine-cols h3 { margin: 0 0 10px; font-size: 1.1rem; }
+.engine-cols ul, .engine-cols ol { margin: 0; padding-left: 1.3em; }
+.note { margin: 10px 0 0; font-size: 0.85rem; color: var(--muted); }
+.doc { margin-top: 28px; font-weight: 700; overflow-wrap: anywhere; }
+
+.site-footer {
+  margin-top: 72px; padding: 28px clamp(16px, 4vw, 48px);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  background: var(--ink); color: #fff;
+}
+.site-footer a { color: #fff; }
+
+/* レスポンシブ */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-body, .engine-cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .site-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .arrow { width: 36px; height: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .track { transition: none; }
+}
