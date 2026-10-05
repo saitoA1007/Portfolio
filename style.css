@@ -42,7 +42,12 @@ a:focus-visible, button:focus-visible {
   color: var(--ink); text-decoration: none; font-weight: 700; padding: 4px 2px;
   border-bottom: 3px solid transparent;
 }
-.site-header nav a:hover { border-bottom-color: var(--buoy); }
+.site-header nav a[aria-current="true"] {
+  color: var(--aqua); background: var(--aqua-soft);
+  border-radius: 6px 6px 0 0; padding: 4px 10px;
+}
+.site-header nav a:hover,
+.site-header nav a[aria-current="true"]:hover { border-bottom-color: var(--buoy); }
 
 /* ヒーロー：スライダー */
 .hero { position: relative; background: var(--ink); }
@@ -89,9 +94,12 @@ a:focus-visible, button:focus-visible {
 }
 
 /* 自己紹介 */
-.about-body { display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: start; }
+.about-body { display: grid; grid-template-columns: 1fr 330px; gap: 40px; align-items: start; }
 .about-text { max-width: 60ch; }
 .about-text p { margin: 0 0 1em; }
+.name-block { margin: 0 0 28px; }
+.about-text .name-kana { margin: 0 0 2px; font-size: 0.95rem; letter-spacing: 0.25em; color: var(--muted); }
+.about-text .name { margin: 0; font-family: var(--head); font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.25; }
 .links { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 12px; }
 .btn {
   display: inline-block; padding: 8px 20px; border-radius: 999px;
@@ -105,6 +113,26 @@ a:focus-visible, button:focus-visible {
 .facts dt { font-size: 0.85rem; color: var(--muted); }
 .facts dd { margin: 0; font-weight: 700; }
 
+/* 実績 */
+.achievements { margin-top: 48px; }
+.achievements h3 { margin: 0 0 12px; font-size: 1.2rem; }
+.achievements ul { list-style: none; margin: 0; padding: 0; }
+.achievements li { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); }
+.achievements li:last-child { border-bottom: 1px solid var(--line); }
+.achievements .kind { font-size: 0.8rem; font-weight: 700; color: var(--aqua); }
+.achievements small { display: block; font-size: 0.85rem; color: var(--muted); }
+
+/* 使用ツールのアイコン */
+.tool-list { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 10px; }
+.tool-list li { width: 56px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.tool-list .ico {
+  width: 44px; height: 44px; border-radius: 10px; background: var(--surface);
+  border: 1px solid var(--line); display: grid; place-items: center;
+  font-size: 0.8rem; font-weight: 700; color: var(--aqua);
+}
+.tool-list .ico img { width: 28px; height: 28px; object-fit: contain; }
+.tool-list .name { font-size: 0.7rem; line-height: 1.3; color: var(--muted); font-weight: 500; }
+
 /* 作品一覧：最大3列、あふれたら次の段へ */
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 24px; }
 .card {
@@ -114,20 +142,56 @@ a:focus-visible, button:focus-visible {
 .card .thumb {
   aspect-ratio: 16 / 9; background: linear-gradient(135deg, var(--aqua-soft), var(--aqua));
 }
+.card .thumb { position: relative; }
+.badges { position: absolute; top: 10px; left: 10px; right: 10px; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.badges li { background: var(--buoy); color: var(--ink); font-size: 0.78rem; font-weight: 700; line-height: 1.5; padding: 1px 10px; border-radius: 999px; box-shadow: 0 2px 8px rgba(18, 48, 59, 0.3); }
 .card .thumb img { width: 100%; height: 100%; object-fit: cover; }
-.card .body { padding: 16px 18px 20px; display: flex; flex-direction: column; flex: 1; }
-.card h3 { margin: 0; font-size: 1.1rem; }
-.card .meta { margin: 2px 0 8px; font-size: 0.85rem; color: var(--muted); }
+.card .body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.card h3 { margin: 0; font-size: 1.2rem; line-height: 1.4; }
+.card .meta { margin: 4px 0 14px; font-size: 0.85rem; color: var(--muted); }
 .card p { margin: 0 0 16px; font-size: 0.95rem; }
+.card .desc { margin: 0 0 14px; line-height: 1.85; }
+.role { margin: 0 0 18px; padding-top: 12px; border-top: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: baseline; font-size: 0.88rem; }
+.role dt { font-size: 0.78rem; font-weight: 700; color: var(--aqua); letter-spacing: 0.08em; }
+.role dd { margin: 0; color: var(--muted); }
 .card .actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
 .card .btn { padding: 6px 16px; font-size: 0.88rem; }
 
+/* 「もっと見る」 */
+.grid:not(.open) .card.extra { display: none; }
+.more-wrap { text-align: center; margin-top: 32px; }
+.btn.more { border: 0; cursor: pointer; font: inherit; font-weight: 700; padding: 10px 36px; }
+
+/* 就職作品：枠で囲まず、番号と余白と細い区切り線で見せる */
+.thesis-cols { counter-reset: item; display: flex; flex-direction: column; margin-top: 8px; }
+.thesis-cols article {
+  counter-increment: item;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-rows: auto auto 1fr; column-gap: clamp(24px, 5vw, 64px);
+  padding: 44px 0; border-top: 1px solid var(--line);
+}
+.thesis-cols article:last-child { border-bottom: 1px solid var(--line); }
+.thesis-cols h3, .thesis-cols p { grid-column: 1; }
+.thesis-cols h3 { margin: 0 0 14px; font-size: 1.35rem; line-height: 1.4; }
+.thesis-cols h3::before {
+  content: counter(item, decimal-leading-zero); display: block;
+  font-family: var(--head); font-size: 3rem; line-height: 1.1; color: var(--aqua); opacity: 0.9;
+}
+.thesis-cols p { margin: 0 0 14px; font-size: 0.97rem; }
+.thesis-cols .page { margin: 0; font-size: 0.85rem; font-weight: 700; color: var(--aqua); }
+.thesis-cols .page::before { content: "→ "; }
+.shots { grid-column: 2; grid-row: 1 / span 3; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-content: start; }
+.shots figure { margin: 0; }
+.shots figure:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.shots img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: var(--aqua-soft); box-shadow: 0 6px 18px rgba(18, 48, 59, 0.12); }
+.shots figure:last-child:nth-child(odd) img { aspect-ratio: 16 / 9; }
+.shots.one figure { aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, var(--aqua-soft), var(--aqua)); box-shadow: 0 6px 18px rgba(18, 48, 59, 0.12); }
+.shots.one img { aspect-ratio: auto; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; }
+.shots figcaption { margin-top: 6px; font-size: 0.8rem; color: var(--muted); }
+.more-doc { margin: 32px 0 0; }
+
 /* エンジン紹介 */
 .lead { max-width: 60ch; margin: 0 0 28px; }
-.engine-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.engine-cols article { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; }
-.engine-cols h3 { margin: 0 0 10px; font-size: 1.1rem; }
-.engine-cols ul, .engine-cols ol { margin: 0; padding-left: 1.3em; }
 .note { margin: 10px 0 0; font-size: 0.85rem; color: var(--muted); }
 .doc { margin-top: 28px; font-weight: 700; overflow-wrap: anywhere; }
 
@@ -141,7 +205,9 @@ a:focus-visible, button:focus-visible {
 /* レスポンシブ */
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .about-body, .engine-cols { grid-template-columns: 1fr; }
+  .about-body { grid-template-columns: 1fr; }
+  .thesis-cols article { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; padding: 32px 0; }
+  .shots { grid-column: 1; grid-row: auto; margin-top: 8px; }
 }
 @media (max-width: 600px) {
   .grid { grid-template-columns: 1fr; }
