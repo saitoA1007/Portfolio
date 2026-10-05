@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oa | ゲームプログラマー ポートフォリオ</title>
-<meta name="description" content="Oaのポートフォリオ。制作したゲーム13作品と自作エンジン AquaEngine の紹介。">
+<title>MyGames | ゲームプログラマー ポートフォリオ</title>
+<meta name="description" content="MyGamesのポートフォリオ。制作したゲーム13作品と自作エンジン AquaEngine の紹介。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,11 +13,12 @@
 <body>
 
 <header class="site-header" id="top">
-  <a class="brand" href="#top">Oa</a>
+  <a class="brand" href="#top">MyGames</a>
   <nav aria-label="ページ内メニュー">
     <a href="#hero">ピックアップ</a>
     <a href="#about">自己紹介</a>
     <a href="#works">作品紹介</a>
+    <a href="#thesis">就職作品</a>
     <a href="#engine">エンジン紹介</a>
   </nav>
 </header>
@@ -36,19 +37,34 @@
     <h2>自己紹介</h2>
     <div class="about-body">
       <div class="about-text">
-        <p>はじめまして、Oaです。ゲームエンジンとグラフィックスの開発に取り組んでいます。</p>
-        <p>DirectX 12 で自作エンジン「AquaEngine」を作り、ラスタライズとレイトレーシング(DXR)の両方の描画に対応させています。ここには、これまでに作ったゲームとエンジンをまとめました。</p>
+        <div class="name-block">
+          <p class="name-kana">サイトウ アオイ</p>
+          <p class="name"><span>齋藤 蒼生</span></p>
+        </div>
+        <p>はじめまして、現在ゲームエンジンとグラフィックスの開発に取り組んでいます。</p>
+        <p>DirectX 12 で自作エンジン「AquaEngine」を作り、ゲームを制作しています。ここには、これまでに作ったゲームとエンジンについてまとめました。</p>
         <p>目指している分野：<strong>ゲームエンジン／グラフィックスプログラマー</strong></p>
         <ul class="links">
-          <li><a class="btn" href="https://github.com/ユーザー名" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a class="btn" href="portfolio.pdf" target="_blank" rel="noopener">ポートフォリオ(PDF)</a></li>
+          <li><a class="btn" href="https://github.com/saitoA1007/AquaEngine.git" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a class="btn" href="https://docs.google.com/presentation/d/14HA0zf9BTqLOznqLL4fONorcYbg7jeGunGRUFFFqhJA/edit?usp=sharing" target="_blank" rel="noopener">ポートフォリオ</a></li>
+          <li><a class="btn" href="https://docs.google.com/presentation/d/1bv6QTca7DwNOV_pxqJWjwCZ1r6IPg8g1wqeTy5jWIbM/edit?slide=id.p1#slide=id.p1" data-doc target="_blank" rel="noopener">プログラム説明資料</a></li>
         </ul>
       </div>
       <dl class="facts">
-        <div><dt>言語</dt><dd>C++</dd></div>
+        <div><dt>言語</dt><dd>C / C++</dd></div>
         <div><dt>API</dt><dd>DirectX 12 / DXR</dd></div>
-        <div><dt>ツール</dt><dd>Visual Studio / Git / ImGui</dd></div>
+        <div><dt>ツール</dt><dd><ul class="tool-list" id="tools"></ul></dd></div>
       </dl>
+    </div>
+
+    <div class="achievements">
+      <h3>実績</h3>
+      <ul>
+        <li><span class="kind">受賞</span><span>第14回 全国専門学校ゲームコンペティション ゲームデザイン賞<small>折り画面</small></span></li>
+        <li><span class="kind">受賞</span><span>2026年度 校内コンテスト 3Dエンジニア部門<small>折り画面</small></span></li>
+        <li><span class="kind">受賞</span><span>2026年度 校内コンテスト 3Dアート部門<small>vs大氷怪鳥ジークアイス</small></span></li>
+        <li><span class="kind">出展</span><span>2026年度 東京ゲームショウ<small>vs大氷怪鳥ジークアイス</small></span></li>
+      </ul>
     </div>
   </section>
 
@@ -56,6 +72,46 @@
   <section id="works" class="section">
     <h2>作品紹介</h2>
     <div class="grid" id="grid"></div>
+    <div class="more-wrap"><button type="button" class="btn more" id="more" aria-expanded="false" aria-controls="grid">もっと見る</button></div>
+  </section>
+
+  <!-- 就職作品で現在取り組んでいること -->
+  <section id="thesis" class="section thesis">
+    <h2>就職作品</h2>
+    <p class="lead">チーム制作では満足のいく氷の表現を作れなかったため、1人でブラッシュアップをおこなっています。テーマは「リアルな氷を表現する」ことです。</p>
+
+    <div class="thesis-cols">
+      <article>
+        <h3>光の表現</h3>
+        <p>レイトレーシングで、氷の後ろにある背景の屈折と、厚みに応じた色の吸光を表現しています。</p>
+        <p class="page">プログラム説明資料 p6</p>
+        <div class="shots">
+          <figure><img src="images/Thesis/light-model.jpg" alt="比較用のモデルと氷" loading="lazy"><figcaption>比較モデル</figcaption></figure>
+          <figure><img src="images/Thesis/light-1.jpg" alt="色の吸光による見た目の変化1" loading="lazy"></figure>
+          <figure><img src="images/Thesis/light-2.jpg" alt="色の吸光による見た目の変化2" loading="lazy"></figure>
+          <figure><img src="images/Thesis/light-3.jpg" alt="色の吸光による見た目の変化3" loading="lazy"></figure>
+        </div>
+      </article>
+      <article>
+        <h3>破壊の表現</h3>
+        <p>衝突したときの破壊、ひび割れ、へこみを、実行中にメッシュを変形させて再現しています。毎フレーム形が変わるメッシュはレイトレーシングと相性が悪いため、最適化にも取り組みました。</p>
+        <p class="page">プログラム説明資料 p12</p>
+        <div class="shots">
+          <figure><img src="images/Thesis/break-1.jpg" alt="破壊前のオブジェクト" loading="lazy"></figure>
+          <figure><img src="images/Thesis/break-2.jpg" alt="破壊されるオブジェクト" loading="lazy"></figure>
+          <figure><img src="images/Thesis/break-3.jpg" alt="破壊後のオブジェクト" loading="lazy"></figure>
+        </div>
+      </article>
+      <article>
+        <h3>作りやすい環境</h3>
+        <p>氷の見た目を試行錯誤しやすいように、ノードで組むマテリアルエディタを作りました。確認と修正を素早く繰り返せます。</p>
+        <div class="shots one">
+          <figure><img src="images/Thesis/material.jpg" alt="マテリアルエディタの画面" loading="lazy"></figure>
+        </div>
+      </article>
+    </div>
+
+    <p class="more-doc"><a class="btn" href="https://docs.google.com/presentation/d/1bv6QTca7DwNOV_pxqJWjwCZ1r6IPg8g1wqeTy5jWIbM/edit?slide=id.p1#slide=id.p1" data-doc target="_blank" rel="noopener">詳しくはプログラム説明資料へ</a></p>
   </section>
 
   <!-- 最下段：エンジン紹介 -->
@@ -63,37 +119,44 @@
     <h2>エンジン紹介：AquaEngine</h2>
     <p class="lead">C++とDirectX 12で作った自作ゲームエンジンです。ラスタライズとDXRのレイトレーシングを同じシーンで切り替えて描画できます。</p>
 
-    <div class="engine-cols">
+    <div class="thesis-cols">
       <article>
-        <h3>基礎的な導入</h3>
-        <ol>
-          <li>リポジトリをクローンする</li>
-          <li>Visual Studioでソリューションを開く</li>
-          <li>ビルドして、サンプルシーンを実行する</li>
-        </ol>
-        <p class="note">※ 手順は実際の環境に合わせて書き換えてください。</p>
+        <h3>レイトレーシングの描画パイプライン</h3>
+        <p>レイトレーシングの描画をできます。</p>
+        <p>DXRを使用してTLAS,BLASの動的更新メカニズムおよび、RayGeneration,ClostHit,Missシェーダーのパイプライン設計、実装をしました。</p>
+        <div class="shots one"><figure><img src="images/Engine/raytracing.png" alt="レイトレーシングで描画したオブジェクト" loading="lazy" onerror="this.remove()"></figure></div>
       </article>
       <article>
-        <h3>こだわったこと</h3>
-        <ul>
-          <li>ラスタライズとDXRの2つの描画パイプラインを持つ</li>
-          <li>ImGuiで作ったシーンエディタ（Undo/Redo、パラメータ調整）</li>
-          <li>パーティクルとトレイルのシステム</li>
-          <li>物理ベースレンダリング(PBR)</li>
-          <li>ノードで組み立てるマテリアルエディタ</li>
-        </ul>
+        <h3>シーンエディタ</h3>
+        <p>ImGuiで作ったエディタです。Undo/Redo、パラメータの調整、オブジェクトの管理ができ、ゲームを作りながら調整できます。</p>
+        <div class="shots one"><figure><img src="images/Engine/sceneEditor.png" alt="シーンエディタの画面" loading="lazy" onerror="this.remove()"></figure></div>
+      </article>
+      <article>
+        <h3>パーティクルエディタ</h3>
+        <p>パーティクルを使い回す仕組みと、機能を組み合わせて作るモジュール構成にしています。。</p>
+        <div class="shots one"><figure><img src="images/Engine/particleEditor.png" alt="パーティクルエディタの画面" loading="lazy" onerror="this.remove()"></figure></div>
+      </article>
+      <article>
+        <h3>物理ベースレンダリング(PBR)</h3>
+        <p>素材の質感を、光の物理に沿って自然に表現します。金属や氷など、材質の違いを描き分けられます。</p>
+        <div class="shots one"><figure><img src="images/Engine/pbr.png" alt="PBRで描画したモデル" loading="lazy" onerror="this.remove()"></figure></div>
+      </article>
+      <article>
+        <h3>マテリアルエディタ</h3>
+        <p>ノードをつないでマテリアルを組み立て、HLSLのコードを作れます。見た目を試行錯誤する時間を短くできます。</p>
+        <div class="shots one"><figure><img src="images/Thesis/material.jpg" alt="マテリアルエディタの画面" loading="lazy" onerror="this.remove()"></figure></div>
       </article>
     </div>
 
     <p class="doc">ドキュメント：
-      <a href="https://github.com/ユーザー名/AquaEngine" target="_blank" rel="noopener">https://github.com/ユーザー名/AquaEngine</a>
+      <a href="https://saitoa1007.github.io/AquaEngineDocument/" target="_blank" rel="noopener">https://saitoa1007.github.io/AquaEngineDocument/</a>
     </p>
   </section>
 </main>
 
 <footer class="site-footer">
   <a href="#top">ページの先頭へ戻る</a>
-  <small>&copy; 2026 Oa</small>
+  <small>&copy; 2026 MyGames</small>
 </footer>
 
 <script src="script.js"></script>
