@@ -28,11 +28,11 @@ const WORKS = [
 
   { title: 'Ore',  meta: '3Dストラテジー / 2年生 / チーム制作(3人) / 1ヶ月',
      desc: '主にアプリケーションを担当しました。ユニットの管理や経路探索アルゴリズムを実装しました。',
-      role: ['アプリケーション', 'ユニット管理', 'エフェクト全般'], img: 'images/Works/Ore.png', video: 'https://www.youtube.com/', zip: '' },
+      role: ['アプリケーション', 'ユニット管理', 'エフェクト全般'], img: 'images/Works/Ore.png', video: 'https://youtu.be/8TGNjWq74-g', zip: '' },
 
   { title: 'チョットバック',  meta: '3D横スクロールアクション / 2年生 / チーム制作(3人) / 1ヶ月',
      desc: '学ぶことが多いチーム制作でした。アプリケーションでステージや敵などレベルデザインをしやすいように気を使いながら制作しました。',
-      role: ['敵の処理','リザルト全般','シーンの管理', 'ステージ全般','エフェクト'], img: 'images/Works/チョットバック.png', video: 'https://www.youtube.com/', zip: '' },
+      role: ['敵の処理','リザルト全般','シーンの管理', 'ステージ全般','エフェクト'], img: 'images/Works/チョットバック.png', video: 'https://youtu.be/RKk2AM1mGEY', zip: '' },
 
   { title: '落とし合い',  meta: '3Dアクションゲーム / 3年生 / チーム制作(3人) / 4ヶ月',
      desc: 'UIを汎用性高く扱えるようにすることを意識しながら制作しました。また、敵の種類を増せるように拡張性を意識した設計を考えました。',
